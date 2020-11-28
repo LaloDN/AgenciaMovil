@@ -17,11 +17,16 @@
   font-size: 16px;
   line-height: 22px;
 
-  color: #8c8c8c;
+  color: #db0f0f;
 
   margin: 0;
 }
 
 #container a {
   text-decoration: none;
+}
+
+//Con este ion-content le pondre una imagen de fondo personalizada prara darle mas estilo.
+ion-content {
+  --background: url(../../assets/FondoFibra.jpg) no-repeat center/cover fixed;
 }

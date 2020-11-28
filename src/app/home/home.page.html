@@ -1,20 +1,34 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" >
   <ion-toolbar>
-    <ion-title>
-      Blank
+    <ion-title color="warning" align="center">
+      NISSAN SENTRA TM
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+ <ion-grid >
+      <ion-col size=4 *ngFor="let v of Sentra2020">
+        <ion-title align="center">Galería</ion-title>
+        <ion-card>
+          <ion-img style="width: 300px; height: 300px;" [src]="v.img1"></ion-img>
+        </ion-card> 
+        <ion-card>
+        <ion-img style="width: 300px; height: 300px;" [src]="v.img2"></ion-img>
+      </ion-card>
+      <ion-card>
+        <ion-img style="width: 300px; height: 300px;"[src]="v.img3"></ion-img>
+      </ion-card>
+      </ion-col>
+      <ion-title align="center">Características Principales</ion-title>
+      <ion-card>
+          <p>*Faros con encendido y apagado automático</p>
+           <p>*Audio con Bluetooth® y reconocimiento de voz</p>
+           <p>*6 bolsas de aire</p>
+            <p>*Pantalla Multi Touch de 8" compatible con Apple CarPlay® & Android Auto®</p>
+              <p>*Cámara de Reversa</p>
+                <p>*Control Crucero</p>
+      </ion-card>
+ </ion-grid>
+ <ion-title align="center">VIDEO DE MUESTRA</ion-title>
 </ion-content>
