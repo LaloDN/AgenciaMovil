@@ -1,13 +1,17 @@
 <ion-header [translucent]="true" >
   <ion-toolbar>
-    <ion-title color="warning" align="center">
-      NISSAN SENTRA TM
+    <ion-title>
+      Inicio
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
- <ion-grid >
+
+  <ion-button [routerLink]="['../detalles/0']">Detalles de id 1</ion-button>
+  <ion-button [routerLink]="['../detalles/1']">Detalles de id 2</ion-button>
+
+ <!-- <ion-grid >
       <ion-col size=4 *ngFor="let v of Sentra2020">
         <ion-title align="center">Galería</ion-title>
         <ion-card>
@@ -30,5 +34,5 @@
                 <p>*Control Crucero</p>
       </ion-card>
  </ion-grid>
- <ion-title align="center">VIDEO DE MUESTRA</ion-title>
+ <ion-title align="center">VIDEO DE MUESTRA</ion-title> -->
 </ion-content>

@@ -10,7 +10,15 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },  {
+    path: 'detalles',
+    loadChildren: () => import('./autos/detalles/detalles.module').then( m => m.DetallesPageModule)
   },
+  {
+    path: 'pedido',
+    loadChildren: () => import('./forms/pedido/pedido.module').then( m => m.PedidoPageModule)
+  },
+
 ];
 
 @NgModule({

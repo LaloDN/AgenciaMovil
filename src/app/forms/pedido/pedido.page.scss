@@ -1,0 +1,41 @@
+ion-content{
+    text-transform: capitalize;
+}
+
+// ion-item{
+//     height: 30px;
+//     border-radius: 8px;
+//     margin: 0 5px;
+// }
+
+// form ion-item{
+//     height: var();
+// }
+
+ion-card{
+    padding: 10px 5px;
+}
+
+.blanco{
+    --background: #8d8d8d;
+}
+
+.rojo{
+    --background: #c71c1c;
+}
+
+.azul{
+    --background: #1c1cd1;
+}
+
+.negro{
+    --background: #141414;
+}
+
+.cafe{
+    --background: #883d1a;
+}
+
+.alert{
+    border: 1px solid blue
+}

@@ -1,0 +1,131 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="navigateBack()" defaultHref=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Realizar pedido</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-grid>
+
+    <ion-row>
+      <ion-col size="12">
+        <p class="ion-text-center">Ingrese sus datos de contacto</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <form #formPedido="ngForm">
+          <ion-row>
+            <ion-col size="10" offset="1">
+              <ion-item>
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-input type="text" ngModel name="nombre" required></ion-input>
+              </ion-item>  
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="10" offset="1">
+              <ion-item>
+                <ion-label position="floating">Correo</ion-label>
+                <ion-input type="email" ngModel name="email" required></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row> 
+        </form>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-row>
+            <ion-col size="12">
+              <ion-title class="ion-text-center"> Detalles del pedido </ion-title>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12"> Auto: {{auto.name}} </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="6"> 
+              Detalles 
+              <ul>
+                <li *ngFor="let detalle of auto.details">
+                  {{detalle}}
+                </li>
+              </ul>
+            </ion-col>
+            <ion-col size="6">
+              <img [src]="auto.images[0]" [ngClass]="extras['color_exterior']">
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              Opcionales
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              Transmision seleccionada:  {{extras['transmision']}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              Rin seleccionado:  {{extras['rin']}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="8">
+              Color interior seleccionado:  {{extras['color_interior']}}
+            </ion-col>
+            <ion-col size="3">
+              <ion-item [ngClass]="extras['color_interior']"></ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="8">
+              Color exterior seleccionado:  {{extras['color_exterior']}}
+            </ion-col>
+            <ion-col size="3">
+              <ion-item [ngClass]="extras['color_exterior']"></ion-item>
+              <br>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-title class="ion-text-center">Precio Total (antes de impuestos):<br>${{ precio() }}</ion-title>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" class="ion-text-center"> Dias de espera (esperados): {{extras.dias_espera}} </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-button (click)="enviarSolicitud()" expand="block">
+          Enviar solicitud de pedido
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-button (click)="buscarSucursal()" expand="block">
+          Buscar sucursal cercana
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+  
+</ion-content>

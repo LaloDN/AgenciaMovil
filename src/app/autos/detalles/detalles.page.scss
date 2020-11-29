@@ -1,0 +1,31 @@
+ion-content {    
+    --background: url(../../../assets/FondoFibra.jpg) no-repeat center/cover fixed;
+}
+
+ion-grid {
+    background: var(--ion-background-color);
+    width: 90vw;
+    margin: auto;
+}
+
+img{
+    height: 200px;
+}
+
+ion-card{
+    padding: 20px;
+}
+
+ion-card-content {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+li {
+    font-size: 16px;
+}
+
+.precio {
+    font-size: 24px;
+}

@@ -1,0 +1,109 @@
+<ion-toolbar>
+  <ion-title>Diseño de auto</ion-title>
+  <ion-button (click)="closeModal()" slot="end" fill="clear" color="danger">
+    <ion-icon name="close"></ion-icon>
+  </ion-button>
+</ion-toolbar>
+
+<ion-content>
+
+  <ion-grid>
+
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        Seleccionar rines
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="3" *ngFor="let rin of info.rines">
+        <ion-item (click)="changeRin(rin)" [ngClass]="{'selected-item': rin == selected.rin}">
+          <img [src]="rin.imagen">
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card-subtitle class="ion-text-center">
+          {{selected.rin.nombre}} : $ {{selected.rin.extra}}
+        </ion-card-subtitle>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        Seleccionar Color exterior
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="3" *ngFor="let color of info.color_exterior">
+        <ion-item (click)="changeColorExterior(color)" [ngClass]="[true? color.nombre +' ': '', color == selected.color_exterior? ' selected-item': '']">
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card-subtitle class="ion-text-center">
+          {{selected.color_exterior.nombre}} : $ {{selected.color_exterior.extra}}
+        </ion-card-subtitle>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        Seleccionar Color interior
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="3" *ngFor="let color of info.color_interior">
+        <ion-item (click)="changeColorInterior(color)" [ngClass]="[true? color.nombre +' ': '', color == selected.color_interior? ' selected-item': '']">
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card-subtitle class="ion-text-center">
+          {{selected.color_interior.nombre}} : $ {{selected.color_interior.extra}}
+        </ion-card-subtitle>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        Seleccionar tipo de transmicion
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6" *ngFor="let tipo of info.transmision">
+        <ion-item (click)="changeTransmision(tipo)" [ngClass]="{'selected-item': tipo == selected.transmision}">
+          {{tipo.nombre}}
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+  
+</ion-content>
+
+<ion-footer fixed>
+  <ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <ion-title class="ion-text-center">Precio total $ {{precio()}}</ion-title>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="8">
+          <p>Tiempo de entrega estimado:<br> {{dias_espera}} dias</p>
+        </ion-col>
+        <ion-col size="4">
+          <ion-button (click)="comprar()" expand="block">
+            Comprar
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+    
+  </ion-item>
+</ion-footer>

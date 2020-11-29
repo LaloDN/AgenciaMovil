@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{auto.name}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="navigateBack()" defaultHref="">
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-grid>
+
+    <ion-row>
+      <ion-col size="12">
+        Video de muestra aqui xd
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="padding-top: 20px;">
+      <ion-col size="12">
+        <ion-title class="ion-text-center"> Galeria </ion-title>
+        <ion-slides #slides (ionSlideWillChange)="changeIndex()">
+          <ion-slide *ngFor="let image of auto.images">
+            <ion-card>
+              <img [src]="image"/>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+        <ion-button class="swiper-button-next" (click)="nextSlide()" expand="block" fill="clear" [disabled]="!hasNext()"> </ion-button>
+        <ion-button class="swiper-button-prev" (click)="prevSlide()" expand="block" fill="clear" [disabled]="!hasPrev()"></ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-title class="ion-text-center">
+            <strong>Caracteristicas</strong>
+          </ion-title>
+          <ion-card-content>
+            <ul>
+              <li *ngFor="let detalle of auto.details">
+                {{detalle}}
+              </li>    
+            </ul>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <p class="ion-text-center precio">
+            Precio desde <br>
+            $ {{ precio() }}
+          </p>
+          <ion-button (click)="modalCalculadora()" expand="block" shape="round">
+            Calculadora de precio
+          </ion-button>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+
+  </ion-grid>
+  
+  
+
+  <!-- 
+       
+  <ion-title align="center">VIDEO DE MUESTRA</ion-title> -->
+ </ion-content>
+ 
