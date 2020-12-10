@@ -8,15 +8,20 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'cambio-coche',
     pathMatch: 'full'
-  },  {
+  },
+  {
     path: 'detalles',
     loadChildren: () => import('./autos/detalles/detalles.module').then( m => m.DetallesPageModule)
   },
   {
     path: 'pedido',
     loadChildren: () => import('./forms/pedido/pedido.module').then( m => m.PedidoPageModule)
+  },
+  {
+    path: 'cambio-coche',
+    loadChildren: () => import('./forms/cambio-coche/cambio-coche.module').then( m => m.CambioCochePageModule)
   },
 
 ];

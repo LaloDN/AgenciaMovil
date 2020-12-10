@@ -1,0 +1,256 @@
+<ion-header> 
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Formulario de cambio de coche</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <form [formGroup]="formularioForm" (ngSubmit)="onSaveForm()">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <ion-text color="medium">
+              Por favor lea con antención, y llene los siguientes datos para hacer una solicitud de cambio de coche
+            </ion-text>        
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-item>
+              <ion-title color="medium">Datos personales</ion-title>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">        
+            <ion-title color="dark">Nombre(s)</ion-title>
+            <ion-item>
+              <ion-input type="text" formControlName="nombre" placeholder="Introduzca su nombre aquí"></ion-input>
+            </ion-item>
+            <ion-text color="danger" class="form-error" *ngIf="nombre.invalid && nombre.touched"> 
+                Introduzca un nombre en el campo, no puede quedar vacío (introduzca al menos 2 carácteres).
+            </ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-title color="dark">Apellidos</ion-title>
+            <ion-item>
+              <ion-input type="text" formControlName="apellidos" placeholder="Introduzca sus apellidos aquí"></ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf="apellidos.invalid && apellidos.touched"> 
+                Introduzca sus apellidos en el campo, no puede quedar vacío (introduzca al menos 5 carácteres).
+            </ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-title color="dark" position="">Género</ion-title>
+            <ion-item>
+              <ion-label color="medium">Seleccione un genero</ion-label>
+              <ion-select formControlName="genero" >
+                <ion-select-option value="M">Mujer</ion-select-option>
+                <ion-select-option value="H">Hombre</ion-select-option>
+                <ion-select-option value="N">No binario</ion-select-option>
+              </ion-select>
+            </ion-item>  
+          </ion-col>
+          <ion-text color="danger" *ngIf="genero.invalid && genero.touched"> 
+              Introduzca género, el campo no puede quedar vacío.
+          </ion-text>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-title color="dark">Correo eléctronico</ion-title>
+            <ion-item>
+              <ion-input type="email" formControlName="correo" placeholder="Introduzca su correo eletronico"></ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf="correo.invalid && correo.touched">
+                Introduzca un formato de email válido.
+            </ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-title color="dark">Teléfono</ion-title>
+            <ion-item>
+              <ion-input type="tel" formControlName="telefono"  placeholder="Introduzca su número de teléfono"></ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf="telefono.invalid && telefono.touched">
+                Introduzca un número telefónico, el campo no puede quedar vacío.
+            </ion-text>  
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-title>Datos de direccion</ion-title>   
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12" size-sm="4">
+            <ion-title color="dark">Ciudad</ion-title>
+            <ion-item>
+              <ion-input type="text" formControlName="ciudad" placeholder="Ciudad donde vive"></ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf="ciudad.invalid && ciudad.touched">
+                Introduzca una ciudad en el campo, no puede quedar vacío (introduzca al menos 5 carácteres).
+            </ion-text>
+          </ion-col>
+          <ion-col size="12" size-sm="4">
+            <ion-title color="dark">Colonia</ion-title>
+            <ion-item>
+              <ion-input type="text" formControlName="colonia" placeholder="Colonia donde vive"></ion-input>
+            </ion-item> 
+            <ion-text color="danger" *ngIf="colonia.invalid && colonia.touched">
+                Introduzca un nombre del colonia en el campo, no puede quedar vacío (introduzca al menos 5 carácteres).
+            </ion-text>
+          </ion-col>
+          <ion-col size="12" size-sm="4">
+            <ion-title color="dark">Calle</ion-title>
+            <ion-item>
+              <ion-input type="text" formControlName="calle" placeholder="Calle donde vive"></ion-input>
+            </ion-item>  
+            <ion-text color="danger" *ngIf="calle.invalid && calle.touched">
+                Introduzca un nombre de calle en el campo, no puede quedar vacío (introduzca al menos 5 carácteres).
+            </ion-text> 
+          </ion-col>          
+        </ion-row>
+        <ion-row>
+          <ion-col size="12" size-sm="3">
+            <ion-title color="dark">Número interior</ion-title>
+            <ion-item>
+              <ion-input type="number" formControlName="nointerno" placeholder="Número interno de su casa"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="12" size-sm="3">
+            <ion-title color="dark">Número exterior</ion-title>
+            <ion-item>
+              <ion-input type="number" formControlName="noexterno" placeholder="Número externo de su casa"></ion-input>
+            </ion-item> 
+            <ion-text color="danger" *ngIf="noexterno.invalid && noexterno.touched">
+                Introduzca el número de su residencia en este campo, no puede quedar vacío.
+            </ion-text>
+          </ion-col>
+          <ion-col size="12" size-sm="6">
+            <ion-title color="dark">País</ion-title>
+              <ion-item>
+                <ion-input type="text" formControlName="pais" placeholder="País donde reside"></ion-input>
+              </ion-item>      
+              <ion-text color="danger" *ngIf="pais.invalid && pais.touched">
+                  Introduzca el país donde reside en este campo, no puede quedar vacío (introduzca al menos 4 carácteres).
+              </ion-text>
+          </ion-col> 
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-title>Datos del coche a cambiar</ion-title>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-title color="dark">
+              <ion-card-title>Modelo</ion-card-title>
+            </ion-title>
+            <ion-item>
+              <ion-input type="text" formControlName="modelo" placeholder="Introduzca el modelo de su auto"></ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf="modelo.invalid && modelo.touched">
+                Introduzca el modelo de su auto en este campo, no puede quedar vacío (introduzca al menos 5 carácteres).
+            </ion-text>  
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-title color="dark">Versión</ion-title>
+            <ion-item>
+              <ion-input type="text" formControlName="version" placeholder="Introduzca la versión de su auto"></ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf="version.invalid && version.touched">
+              Introduzca la versión de su auto en este campo, no puede quedar vacío (introduzca al menos 5 carácteres).
+            </ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-title color="dark">Color</ion-title>
+            <ion-item>
+              <ion-input type="text" formControlName="color" placeholder="Color del auto"></ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf="color.invalid && color.touched">
+                Introduzca el color de su auto en este campo, no puede quedar vacío (introduzca al menos 3 carácteres).
+            </ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-title color="dark">Kilometraje</ion-title>
+            <ion-item>
+              <ion-input type="number" formControlName="kilometraje" placeholder="Kilometraje actual de su auto"></ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf="kilometraje.invalid && kilometraje.touched">
+                Introduzca el kilometraje de su auto en este campo, no puede quedar vacío (introduzca al menos 2 cáracteres).
+            </ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-title color="dark">Precio inicial</ion-title>
+            <ion-item>
+              <ion-input type="text" formControlName="precio" placeholder="Precio con el que adquirió el auto"></ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf="precio.invalid && precio.touched">
+                Introduzca el precio inicial del auto en este campo, no puede quedar vacío (introduzca al menos 5 cáraceteres).
+            </ion-text>            
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-title color="dark">Motivo del cambio</ion-title>
+            <br>
+            <ion-item>
+              <ion-text color="medium">En el siguiente campo describa el problema con su auto de manera breve, con un máximo de 500 caracteres.</ion-text>
+            </ion-item>            
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">         
+           <ion-item class="textarea">
+              <ion-label color="medium" position="floating">Describa aquí el problema con su auto</ion-label>
+              <ion-textarea rows=5 type="text" formControlName="mensaje"></ion-textarea>
+            </ion-item>
+            <ion-text color="danger" *ngIf="mensaje.invalid && mensaje.touched">
+                Asegurese de que su texto contenga entre 10 y 500 carácteres.
+            </ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-item>
+              <ion-label color="medium">Presione el boton elegir archivo para subir una foto de su auto en su estado actual</ion-label>
+            </ion-item>            
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-item>
+              <ion-label id="profile_image" color="primary" stacked>Envie la foto</ion-label>
+              <ion-input type="file" accept="image/*" formControlName="foto"></ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf="foto.invalid && foto.touched">
+                Suba un archivo de imagen de su auto.
+            </ion-text>
+            <p>
+              <ion-label position="floating" color="medium">Al hacer click en el siguiente botón de enviar, estará aceptando que es conciente de los datos que ha introducido son verídicos y así se procederá con la solicitud de cambio de coche.</ion-label>
+            </p>
+            <ion-button class="button button-block button-positive" type="submit" >Enviar datos</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </ion-card>
+
+</ion-content>

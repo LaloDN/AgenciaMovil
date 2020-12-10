@@ -1,9 +1,13 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+import { AngularFireDatabase } from '@angular/fire/database'
+import { AngularFireModule, FirebaseApp } from '@angular/fire';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AlertController, LoadingController, NavController } from '@ionic/angular';
 import { Auto } from 'src/app/autos/auto.model';
 import { AutosService } from 'src/app/autos/autos.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-pedido',
@@ -22,7 +26,8 @@ export class PedidoPage implements OnInit {
     private autosService: AutosService,
     private navCtrl: NavController,
     private alertCtrl: AlertController,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private conexion: AngularFireDatabase
   ) { }
 
   ngOnInit() {
@@ -44,11 +49,8 @@ export class PedidoPage implements OnInit {
     return this.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
-  onSubmit(){
-    console.log(this.auto)
-  }
-
   async enviarSolicitud(){
+
     //expresion regular para validar email
     const regexp = /\S+@\S+\.\S+/ 
 
@@ -56,8 +58,7 @@ export class PedidoPage implements OnInit {
       this.alertCtrl.create({
         header: 'Datos invalidos',
         message: 'Los datos ingresados no son validos',
-        buttons: ['Ok'],
-        cssClass: 'alert'
+        buttons: ['Ok']
       }).then(
         el => {
           el.present()
@@ -71,36 +72,40 @@ export class PedidoPage implements OnInit {
       email: this.form.value['email'],
       auto: this.auto,
       opcionales: this.extras
-    }
+    }   
 
-
-    const loadingEl = await this.loadingCtrl.create({
+    let loadingEl = await this.loadingCtrl.create({
       message: 'Por favor espera...',
       spinner: 'crescent',
       duration: 1000
     })
-
-    loadingEl.present().then(
-      _ => 
-      { 
-        loadingEl.dismiss()
-        this.alertCtrl.create({
-        header: 'Exito',
-        message: 'Solicitud enviada',
-        buttons: [
-          {
-            text: 'Continuar',
-            handler: () => {
-              this.navCtrl.navigateRoot('home')
-            }
+    
+    let db = this.conexion.database.ref('pedidos')
+    loadingEl.present()
+    await db.push(solicitud, res => {
+      loadingEl.dismiss()
+      this.alertCtrl.create({
+      header: 'Exito',
+      message: 'Solicitud enviada',
+      buttons: [
+        {
+          text: 'Continuar',
+          handler: () => {
+            this.navCtrl.navigateRoot('home')
           }
-        ]
+        }
+      ]
       }).then(
         el => el.present()
-      ) 
-      } 
-    )
-    
+      )
+    }).catch(err => {
+      this.alertCtrl.create({
+        header: 'Error',
+        message: 'Hubo un error al procesar tu solicitud, prueba tu conexion a internet y prueba nuevamente',
+        buttons: ['Cerrar']
+        })
+      })
+
   }
 
   buscarSucursal(){

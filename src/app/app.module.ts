@@ -9,6 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CalculadoraComponent } from './autos/calculadora/calculadora.component';
+import { FirebaseApp } from '@angular/fire';
 
 @NgModule({
   declarations: [
@@ -17,13 +18,12 @@ import { CalculadoraComponent } from './autos/calculadora/calculadora.component'
     CalculadoraComponent
   ],
   entryComponents: [
-    //ojo xd
-    CalculadoraComponent
   ],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [
     StatusBar,
     SplashScreen,
+    FirebaseApp,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

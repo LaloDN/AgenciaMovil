@@ -44,17 +44,17 @@ export class CalculadoraComponent implements OnInit {
       },
       {
         nombre: 'rojo',
-        extra: 7000,
+        extra: 9000,
         dias: 10
       },
       {
         nombre: 'azul',
-        extra: 7000,
+        extra: 10000,
         dias: 12
       },
       {
         nombre: 'negro',
-        extra: 10000,
+        extra: 13000,
         dias: 17
       }
     ],
@@ -83,7 +83,7 @@ export class CalculadoraComponent implements OnInit {
       },
       {
         nombre: 'manual',
-        extra: 4000,
+        extra: 15000,
         dias: 15
       }
     ]

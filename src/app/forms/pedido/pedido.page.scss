@@ -2,18 +2,14 @@ ion-content{
     text-transform: capitalize;
 }
 
-// ion-item{
-//     height: 30px;
-//     border-radius: 8px;
-//     margin: 0 5px;
-// }
-
-// form ion-item{
-//     height: var();
-// }
-
 ion-card{
     padding: 10px 5px;
+}
+
+.imagen{
+    height: 160px;
+    width: fit-content;
+    margin: auto;
 }
 
 .blanco{
@@ -34,8 +30,4 @@ ion-card{
 
 .cafe{
     --background: #883d1a;
-}
-
-.alert{
-    border: 1px solid blue
 }

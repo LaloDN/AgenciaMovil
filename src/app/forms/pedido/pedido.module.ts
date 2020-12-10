@@ -7,13 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { PedidoPageRoutingModule } from './pedido-routing.module';
 
 import { PedidoPage } from './pedido.page';
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PedidoPageRoutingModule
+    PedidoPageRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   declarations: [PedidoPage]
 })

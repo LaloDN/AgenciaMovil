@@ -25,7 +25,7 @@ export class AutosService {
         'Equipo de audio'
       ],
       //imagenes
-      ['assets/virtus 1.png','assets/virtus 2.png','assets/virtus 3.png'],
+      ['assets/virtus 1.jpg','assets/virtus 2.jpg','assets/virtus 3.jpg'],
       //video
       ''),
     new Auto(
@@ -43,7 +43,7 @@ export class AutosService {
         'Equipo de audio',
         'Sistema de navegacion'
       ],
-      ['assets/polo 1.png','assets/polo 2.png','assets/polo 3.png'],
+      ['assets/polo 1.jpg','assets/polo 2.jpg','assets/polo 3.jpg'],
       ''),
     new Auto(
       3,
@@ -60,7 +60,7 @@ export class AutosService {
         'Equipo de audio',
         'Sistema de navegacion'
       ],
-      ['assets/vento 1.png','assets/vento 2.png','assets/vento 3.png'],
+      ['assets/vento 1.jpg','assets/vento 2.jpg','assets/vento 3.jpg'],
       ''),
     new Auto(
       4,
@@ -77,7 +77,7 @@ export class AutosService {
         'Equipo de audio',
         'Cargador inalambrico para smartphone'
       ],
-      ['assets/golf 1.png','assets/golf 2.png','assets/golf 3.png'],
+      ['assets/golf 1.jpg','assets/golf 2.jpg','assets/golf 3.jpg'],
       ''),
     new Auto(
       5,
@@ -94,7 +94,7 @@ export class AutosService {
         'Equipo de audio',
         'Sistema de navegacion'
       ],
-      ['assets/jetta 1.png','assets/jetta 2.png','assets/jetta 3.png','assets/jetta 4.png','assets/jetta 5.png'],
+      ['assets/jetta 1.jpg','assets/jetta 2.jpg','assets/jetta 3.jpg','assets/jetta 4.jpg','assets/jetta 5.jpg'],
       ''),
     new Auto(
       6,
@@ -111,7 +111,7 @@ export class AutosService {
         'Computadora de viaje',
         'Equipo de audio',
       ],
-      ['assets/saveiro 1.png','assets/saveiro 2.png','assets/saveiro 3.png'],
+      ['assets/saveiro 1.jpg','assets/saveiro 2.jpg','assets/saveiro 3.jpg'],
       ''),
     new Auto(
       7,
@@ -130,7 +130,7 @@ export class AutosService {
         'Direccion hidraulica',
         'Frenos ABS'
       ],
-      ['assets/gol 1.png','assets/gol 2.png','assets/gol 3.png'],
+      ['assets/gol 1.jpg','assets/gol 2.jpg','assets/gol 3.jpg'],
       ''),
     new Auto(
       8,
@@ -149,7 +149,7 @@ export class AutosService {
         'Direccion hidraulica',
         'Frenos ABS'
       ],
-      ['assets/golf_gti 1.png','assets/golf_gti 2.png','assets/golf_gti 3.png'],
+      ['assets/golf_gti 1.jpg','assets/golf_gti 2.jpg','assets/golf_gti 3.jpg'],
       ''),
     new Auto(
       9,
@@ -169,7 +169,7 @@ export class AutosService {
         'Sistema de navegacion',
         'Cargador inalambrico para smartphone'
       ],
-      ['assets/jetta_gli 1.png','assets/jetta_gli 2.png','assets/jetta_gli 3.png'],
+      ['assets/jetta_gli 1.jpg','assets/jetta_gli 2.jpg','assets/jetta_gli 3.jpg'],
       ''),
   ])
 
