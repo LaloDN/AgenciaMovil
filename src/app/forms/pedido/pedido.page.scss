@@ -8,12 +8,13 @@ ion-card{
 
 .imagen{
     height: 160px;
-    width: fit-content;
+    width: 80%;
+    max-width: 400px;
     margin: auto;
 }
 
 .blanco{
-    --background: #8d8d8d;
+    --background: rgb(196, 196, 196);
 }
 
 .rojo{
