@@ -169,7 +169,7 @@ export class AutosService {
         'Sistema de navegacion',
         'Cargador inalambrico para smartphone'
       ],
-      ['assets/jetta_gli 1.jpg','assets/jetta_gli 2.jpg','assets/jetta_gli 3.jpg'],
+      ['assets/jetta_gli 1.jpeg','assets/jetta_gli 2.jpg','assets/jetta_gli 3.jpg'],
       ''),
   ])
 

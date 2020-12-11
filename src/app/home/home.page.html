@@ -8,34 +8,38 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-button [routerLink]="['../detalles/0']">Detalles de id 1</ion-button>
-  <ion-button [routerLink]="['../detalles/1']">Detalles de id 2</ion-button>
-  <ion-button [routerLink]="['../cambio-coche']">
-    Formulario cambio de coche
-  </ion-button>
+  <ion-button [routerLink]="['../cambio-coche']">Formulario cambio de coche</ion-button>
 
- <!-- <ion-grid >
-      <ion-col size=4 *ngFor="let v of Sentra2020">
-        <ion-title align="center">Galería</ion-title>
-        <ion-card>
-          <ion-img style="width: 300px; height: 300px;" [src]="v.img1"></ion-img>
-        </ion-card> 
-        <ion-card>
-        <ion-img style="width: 300px; height: 300px;" [src]="v.img2"></ion-img>
-      </ion-card>
-      <ion-card>
-        <ion-img style="width: 300px; height: 300px;"[src]="v.img3"></ion-img>
-      </ion-card>
+  <!-- <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-xl="4" size-md="12" size-sm="12" *ngFor="let auto of autos">
+        <ion-card [routerLink]="['../detalles/'+auto.id]">
+          <img [src]="auto.images[0]">
+        </ion-card>
       </ion-col>
-      <ion-title align="center">Características Principales</ion-title>
-      <ion-card>
-          <p>*Faros con encendido y apagado automático</p>
-           <p>*Audio con Bluetooth® y reconocimiento de voz</p>
-           <p>*6 bolsas de aire</p>
-            <p>*Pantalla Multi Touch de 8" compatible con Apple CarPlay® & Android Auto®</p>
-              <p>*Cámara de Reversa</p>
-                <p>*Control Crucero</p>
-      </ion-card>
- </ion-grid>
- <ion-title align="center">VIDEO DE MUESTRA</ion-title> -->
+    </ion-row>
+  </ion-grid> -->
+
+  <ion-row class="ion-justify-content-center">
+    <ion-item style="width: 1200px" style="border-style: solid;">
+      <ion-title align="center">Nuestro catálogo</ion-title>
+    </ion-item>
+  </ion-row>
+
+  <ion-grid>
+    <ion-row style="height: 300px;">
+        <ion-item *ngFor="let auto of autos" [routerLink]="['../detalles/'+auto.id]" style="border-style: solid;">
+          <ion-col size="6">
+            <ion-img [src]="auto.images[0]"></ion-img>  
+          </ion-col>
+          <ion-col size="6">
+            <ion-label>{{auto.name}}</ion-label>
+            <ion-label>{{auto.details[0]}}</ion-label>
+            <ion-label>{{auto.details[1]}}</ion-label>
+            <ion-label>{{auto.price}}</ion-label>            
+          </ion-col>
+        </ion-item>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>
