@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IonSlides, ModalController, NavController } from '@ionic/angular';
 import { Auto } from '../auto.model';
@@ -21,15 +22,19 @@ export class DetallesPage implements OnInit {
     private navCtrl: NavController,
     private route: ActivatedRoute,
     private autosService: AutosService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private sanitizier: DomSanitizer
   ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(paramMap => {
       let id = +paramMap.get('auto')
       this.auto = this.autosService.getAuto(id)
-      console.log(this.auto)
     })
+  }
+
+  videoUrl(){
+    return this.sanitizier.bypassSecurityTrustResourceUrl(this.auto.video)
   }
 
   async ionViewDidEnter(){
@@ -78,5 +83,6 @@ export class DetallesPage implements OnInit {
   precio(){
     return this.auto.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
+
 
 }

@@ -27,7 +27,7 @@ export class AutosService {
       //imagenes
       ['assets/virtus 1.jpg','assets/virtus 2.jpg','assets/virtus 3.jpg'],
       //video
-      ''),
+      'https://www.youtube.com/embed/Ik-SFv95MxY'),
     new Auto(
       2,
       'Polo',
@@ -44,7 +44,7 @@ export class AutosService {
         'Sistema de navegacion'
       ],
       ['assets/polo 1.jpg','assets/polo 2.jpg','assets/polo 3.jpg'],
-      ''),
+      'https://www.youtube.com/embed/60NEN2ZM_k8'),
     new Auto(
       3,
       'Vento',
@@ -61,7 +61,7 @@ export class AutosService {
         'Sistema de navegacion'
       ],
       ['assets/vento 1.jpg','assets/vento 2.jpg','assets/vento 3.jpg'],
-      ''),
+      'https://www.youtube.com/embed/YK0qFbOVUhE'),
     new Auto(
       4,
       'Golf comfortline',
@@ -78,7 +78,7 @@ export class AutosService {
         'Cargador inalambrico para smartphone'
       ],
       ['assets/golf 1.jpg','assets/golf 2.jpg','assets/golf 3.jpg'],
-      ''),
+      'https://www.youtube.com/embed/co5O7-j1tt4'),
     new Auto(
       5,
       'Jetta Startline Triptonic',
@@ -95,7 +95,7 @@ export class AutosService {
         'Sistema de navegacion'
       ],
       ['assets/jetta 1.jpg','assets/jetta 2.jpg','assets/jetta 3.jpg','assets/jetta 4.jpg','assets/jetta 5.jpg'],
-      ''),
+      'https://www.youtube.com/embed/nq3yQCWYWZQ'),
     new Auto(
       6,
       'Saveiro',
@@ -112,7 +112,7 @@ export class AutosService {
         'Equipo de audio',
       ],
       ['assets/saveiro 1.jpg','assets/saveiro 2.jpg','assets/saveiro 3.jpg'],
-      ''),
+      'https://www.youtube.com/embed/LwyHAYL5w18'),
     new Auto(
       7,
       'Gol',
@@ -131,7 +131,7 @@ export class AutosService {
         'Frenos ABS'
       ],
       ['assets/gol 1.jpg','assets/gol 2.jpg','assets/gol 3.jpg'],
-      ''),
+      'https://www.youtube.com/embed/WMtZzKb9A5E'),
     new Auto(
       8,
       'Golf GTI',
@@ -150,7 +150,7 @@ export class AutosService {
         'Frenos ABS'
       ],
       ['assets/golf_gti 1.jpg','assets/golf_gti 2.jpg','assets/golf_gti 3.jpg'],
-      ''),
+      'https://www.youtube.com/embed/_Et2TKHjmB0'),
     new Auto(
       9,
       'Jetta GLi',
@@ -170,7 +170,7 @@ export class AutosService {
         'Cargador inalambrico para smartphone'
       ],
       ['assets/jetta_gli 1.jpeg','assets/jetta_gli 2.jpg','assets/jetta_gli 3.jpg'],
-      ''),
+      'https://www.youtube.com/embed/Aae-_Q88qW8'),
   ])
 
   constructor() { }

@@ -14,7 +14,7 @@
 
     <ion-row>
       <ion-col size="12">
-        <iframe [src]="auto.video"
+        <iframe [src]="videoUrl()"
           frameborder="1"
           allowfullscreen>
         </iframe>
@@ -61,7 +61,7 @@
             $ {{ precio() }}
           </p>
           <ion-button (click)="modalCalculadora()" expand="block" shape="round">
-            Calculadora de precio
+            Calculadora
           </ion-button>
         </ion-card>
       </ion-col>
