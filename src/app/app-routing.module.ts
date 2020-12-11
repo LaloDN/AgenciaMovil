@@ -23,6 +23,11 @@ const routes: Routes = [
     path: 'cambio-coche',
     loadChildren: () => import('./forms/cambio-coche/cambio-coche.module').then( m => m.CambioCochePageModule)
   },
+  {
+    path: 'sucursales',
+    loadChildren: () => import('./sucursales/sucursales.module').then( m => m.SucursalesPageModule)
+  },
+
 
 ];
 

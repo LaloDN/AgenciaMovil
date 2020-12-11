@@ -108,8 +108,4 @@ export class PedidoPage implements OnInit {
 
   }
 
-  buscarSucursal(){
-
-  }
-
 }

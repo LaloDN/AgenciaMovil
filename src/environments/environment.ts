@@ -12,7 +12,8 @@ export const environment = {
     storageBucket: "pia-aplicaciones.appspot.com",
     messagingSenderId: "287928055247",
     appId: "1:287928055247:web:d5531d4a6b3627af50ceba"
-  }
+  },
+  googleMapsAPIKey: 'AIzaSyDQT9_ljvvQ8OvwJ3QxGgWghfd5lTkhfnU'
 };
 
 /*
