@@ -38,20 +38,13 @@ export class SucursalesPage implements OnInit, OnDestroy {
           }
           let marker: Marker = this.map.addMarkerSync(markerOptions)
           marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(()=>{
-            let options: GeocoderRequest = {
-              position: marker.getPosition()
-            };
-            // latitude,longitude -> direccion
-            Geocoder.geocode(options)
-            .then((res) => {
-              this.alertCtrl.create({
-                header: sucursal.nombre,
-                message: res[0].extra.lines[5] +", "+ res[0].extra.lines[4] +", "+ res[0].extra.lines[3] +", "+ res[0].extra.lines[2] +", "+ res[0].extra.lines[1] + ", CP: " +((res[0].extra.lines[6] != undefined)? res[0].extra.lines[6]: 'N/D'),
-                buttons: ['Ok']
-              }).then(
-                el => el.present()
-              )
-            })
+            this.alertCtrl.create({
+              header: sucursal.nombre,
+              message: sucursal.direccion[0] +", "+ sucursal.direccion[1]+", "+ sucursal.direccion[2]+", "+ sucursal.direccion[3]+", "+ sucursal.direccion[4]+", "+ sucursal.direccion[5],
+              buttons: ['Ok']
+            }).then(
+              el => el.present()
+            )
           })
         }
       )
@@ -96,19 +89,31 @@ export class SucursalesPage implements OnInit, OnDestroy {
   getClosest(){
     this.map.getMyLocation().then(
       posicion => {
-        let pos = {
-          lat: posicion.latLng.lat,
-          lng: posicion.latLng.lng
+          let pos = {
+            lat: posicion.latLng.lat,
+            lng: posicion.latLng.lng
+          }
+          let sucursalCercana = this.sucService.getClosest(pos.lat, pos.lng)
+          
+          this.map.addPolyline({
+            geodesic: true,
+            points: [
+              {lat: pos.lat, lng: pos.lng},
+              {lat: sucursalCercana.coords.lat, lng: sucursalCercana.coords.lng}
+            ]
+          })
+      }
+    ).catch(err => {
+      this.alertCtrl.create({
+        header: 'Error',
+        message: 'No se pudo obtener la posicion actual',
+        buttons: ['Ok']
+      }).then(
+        el => {
+          el.present()
         }
-        let sucursalCercana = this.sucService.getClosest(pos.lat, pos.lng)
-        
-        this.map.addPolyline({
-          geodesic: true,
-          points: [
-            {lat: pos.lat, lng: pos.lng},
-            {lat: sucursalCercana.coords.lat, lng: sucursalCercana.coords.lng}
-          ]
-        })
+      )
+
     })
   }
 
