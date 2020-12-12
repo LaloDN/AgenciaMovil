@@ -4,6 +4,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlertController, LoadingController, NavController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 @Component({
   selector: 'app-cambio-coche',
@@ -14,6 +15,8 @@ export class CambioCochePage implements OnInit {
   
   //Aquí guardaremos nuestro formulario, sera de tipo FormGroup
   formularioForm:FormGroup;
+  //Y aquí hacemos la imagen
+  imagen:string;
 
   //Utilizaremos el ngONInit como un método que nos devuelva un formulario que creemos
   ngOnInit() {
@@ -35,7 +38,7 @@ export class CambioCochePage implements OnInit {
       kilometraje: new FormControl('',[Validators.required,Validators.minLength(2)]),
       precio: new FormControl('',[Validators.required,Validators.minLength(5)]),
       mensaje: new FormControl('',[Validators.required,Validators.minLength(10),Validators.maxLength(500)]),
-      foto: new FormControl('',Validators.required),
+     // foto: new FormControl('',Validators.required),
     });
   }
 
@@ -57,7 +60,7 @@ export class CambioCochePage implements OnInit {
     get kilometraje(){return this.formularioForm.get('kilometraje');}
     get precio(){return this.formularioForm.get('precio');}
     get mensaje(){return this.formularioForm.get('mensaje');}
-    get foto(){return this.formularioForm.get('foto')}
+  //  get foto(){return this.formularioForm.get('foto')}
 
 
   //Aquí tambien inyectamos nuestro servicio de conexión para pasarle el formulario que acabamos de llenar
@@ -65,8 +68,24 @@ export class CambioCochePage implements OnInit {
     private alertCtrl: AlertController, // mensaje de alerta de ionic
     private conexion: AngularFireDatabase,
     private loadingCtrl: LoadingController,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private camera:Camera
   ) {
+  }
+
+  //Método para poder hacer la foto desde nuestro celular
+  hacerFoto(){
+    console.log('Se esta llamando al método');
+    const options:CameraOptions={
+      destinationType:this.camera.DestinationType.DATA_URL
+    }
+    this.camera.getPicture(options).then((imageData)=>{
+      this.imagen='data:image/jpeg;dase64,'+imageData;
+    },
+      (err)=>{
+        console.log(err);
+      }
+    );
   }
 
   //Con este método guardaremos el formulario
