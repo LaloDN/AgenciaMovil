@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseApp } from '@angular/fire';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Camera } from '@ionic-native/camera/ngx';
 import { AlertController, LoadingController, NavController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 @Component({
   selector: 'app-cambio-coche',
@@ -15,8 +15,8 @@ export class CambioCochePage implements OnInit {
   
   //Aquí guardaremos nuestro formulario, sera de tipo FormGroup
   formularioForm:FormGroup;
-  //Y aqui hacemos la imagen
-  imagen: string;
+  //Y aquí hacemos la imagen
+  imagen:string;
 
   //Utilizaremos el ngONInit como un método que nos devuelva un formulario que creemos
   ngOnInit() {
@@ -38,7 +38,7 @@ export class CambioCochePage implements OnInit {
       kilometraje: new FormControl('',[Validators.required,Validators.minLength(2)]),
       precio: new FormControl('',[Validators.required,Validators.minLength(5)]),
       mensaje: new FormControl('',[Validators.required,Validators.minLength(10),Validators.maxLength(500)]),
-      foto: new FormControl('',Validators.required),
+     // foto: new FormControl('',Validators.required),
     });
   }
 
@@ -60,7 +60,7 @@ export class CambioCochePage implements OnInit {
     get kilometraje(){return this.formularioForm.get('kilometraje');}
     get precio(){return this.formularioForm.get('precio');}
     get mensaje(){return this.formularioForm.get('mensaje');}
-    get foto(){return this.formularioForm.get('foto')}
+  //  get foto(){return this.formularioForm.get('foto')}
 
 
   //Aquí tambien inyectamos nuestro servicio de conexión para pasarle el formulario que acabamos de llenar
