@@ -230,19 +230,24 @@
         <ion-row>
           <ion-col size="12">
             <ion-item>
-              <ion-label color="medium">Presione el boton elegir archivo para subir una foto de su auto en su estado actual</ion-label>
+              <ion-label color="medium">Presione el boton "Hacer imagen" para subir una foto de su auto en su estado actual</ion-label>
             </ion-item>            
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col size="12">
-            <ion-item>
-              <ion-label id="profile_image" color="primary" stacked>Envie la foto</ion-label>
-              <ion-input type="file" accept="image/*" formControlName="foto"></ion-input>
-            </ion-item>
-            <ion-text color="danger" *ngIf="foto.invalid && foto.touched">
-                Suba un archivo de imagen de su auto.
-            </ion-text>
+              <ion-button (click)="hacerFoto()" expand="block">
+                Hacer imagen
+              </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="imagen">
+          <ion-col size="12">
+              <img [src]="imagen">
+          </ion-col>
+        </ion-row>        
+        <ion-row>
+          <ion-col size="12">
             <p>
               <ion-label position="floating" color="medium">Al hacer click en el siguiente botón de enviar, estará aceptando que es conciente de los datos que ha introducido son verídicos y así se procederá con la solicitud de cambio de coche.</ion-label>
             </p>

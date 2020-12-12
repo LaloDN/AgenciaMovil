@@ -1,8 +1,13 @@
 <ion-header [translucent]="true" >
   <ion-toolbar>
-    <ion-title class="ion-text-center">
-      Inicio
-    </ion-title>
+    <ion-item>
+      <img src="assets/Logo.png" alt="logo" class="logo">
+      <ion-title> App</ion-title>
+      <ion-title class="ion-text-right">
+        Inicio
+      </ion-title>
+    </ion-item>
+    
   </ion-toolbar>
 </ion-header>
 
@@ -13,7 +18,7 @@
       <ion-col size="8" offset="2">
         <ion-item>
           <ion-title class="ion-text-center">Catálogo</ion-title>
-        </ion-item>       
+        </ion-item>
       </ion-col>
     </ion-row>
 
@@ -21,20 +26,21 @@
       <ion-col size="12">
         <ion-item>
           <p class="ion-text-center">Toque cualquier auto para ver mas informacion</p>
-        </ion-item>        
+        </ion-item>
       </ion-col>
     </ion-row>
     <ion-row *ngFor="let auto of autos">
       <ion-card [routerLink]="['../detalles/'+auto.id]">
         <ion-card-content>
-          <ion-col size="6">
+          <ion-col size="12">
             <img [src]="auto.images[0]"/>
           </ion-col>
-          <ion-col size="6">
-            <ion-label>{{auto.name}}</ion-label>
-            <ion-label>{{auto.details[0]}}</ion-label>
-            <ion-label>{{auto.details[1]}}</ion-label>
-            <ion-label>{{auto.price}}</ion-label> 
+          <ion-col size="12">
+            <br>
+            <ion-label class="ion-text-center">{{auto.name}}</ion-label><br>
+            <ion-label>{{auto.details[0]}}</ion-label><br>
+            <ion-label>{{auto.details[1]}}</ion-label><br>
+            <ion-label>Precio: ${{precio(auto.price)}}</ion-label> 
           </ion-col>
         </ion-card-content>
       </ion-card>

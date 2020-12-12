@@ -30,8 +30,11 @@ class Sucursal{
 export class SucursalesService {
 
   _sucursales = new BehaviorSubject([
-    new Sucursal("Sucursal 1", 25.7061582, -100.3479721),
-    new Sucursal("Sucursal 2", 27.7061582, -101.3479721)
+    new Sucursal("Sucursal FCFM", 25.7255829, -100.3173837),
+    new Sucursal("Sucursal San Pedro", 25.6630269, -100.4081672),
+    new Sucursal("Sucursal Guadalupe", 25.6754221, -100.2068738),
+    new Sucursal("Sucursal Country", 25.6389632, -100.2873042),
+    new Sucursal("Sucursal Allende", 25.280373, -100.0283287)
   ])
 
   constructor() {  

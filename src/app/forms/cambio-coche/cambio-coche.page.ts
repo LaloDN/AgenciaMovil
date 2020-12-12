@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseApp } from '@angular/fire';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Camera } from '@ionic-native/camera/ngx';
 import { AlertController, LoadingController, NavController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 
@@ -14,6 +15,8 @@ export class CambioCochePage implements OnInit {
   
   //Aquí guardaremos nuestro formulario, sera de tipo FormGroup
   formularioForm:FormGroup;
+  //Y aqui hacemos la imagen
+  imagen: string;
 
   //Utilizaremos el ngONInit como un método que nos devuelva un formulario que creemos
   ngOnInit() {
@@ -65,8 +68,27 @@ export class CambioCochePage implements OnInit {
     private alertCtrl: AlertController, // mensaje de alerta de ionic
     private conexion: AngularFireDatabase,
     private loadingCtrl: LoadingController,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private camera: Camera
   ) {
+  }
+
+  //Metodo para hacer la foto
+  hacerFoto(){
+    const options: CameraOptions={
+      destinationType: this.camera.DestinationType.DATA_URL
+    }
+    this.camera.getPicture(options).then((imageData)=>{
+      this.imagen = 'data:image/jpeg;base64,'+imageData
+    },
+    err => {
+      this.alertCtrl.create({
+        header: 'Error',
+        message: 'Ocurrio un error al tomar la foto. Intentalo nuevamente.',
+        buttons: ['Ok']
+      }).then(el => el.present())
+    })
+
   }
 
   //Con este método guardaremos el formulario

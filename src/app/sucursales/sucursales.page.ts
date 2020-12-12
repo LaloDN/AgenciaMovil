@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { GoogleMap, GoogleMapOptions, GoogleMaps, GoogleMapsEvent, MarkerOptions, Polyline } from '@ionic-native/google-maps';
+import { BaseArrayClass, Environment, Geocoder, GeocoderRequest, GeocoderResult, GoogleMap, GoogleMapOptions, GoogleMaps, GoogleMapsEvent, Marker, MarkerOptions } from '@ionic-native/google-maps';
+import { AlertController } from '@ionic/angular';
 import { SucursalesService } from './sucursales.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class SucursalesPage implements OnInit, OnDestroy {
 
   constructor(
     private googlemaps: GoogleMaps,
-    private sucService: SucursalesService
+    private sucService: SucursalesService,
+    private alertCtrl: AlertController
   ) { }
 
   ngOnInit() {
@@ -21,19 +23,36 @@ export class SucursalesPage implements OnInit, OnDestroy {
 
   ionViewWillEnter(){
     this.cargarMapa()
+    //cuando carge el mapa, se agregan los marcadores...
     this.map.on(GoogleMapsEvent.MAP_READY).subscribe( () => {
       this.sucService.getAll().forEach(
         sucursal => {
           let markerOptions: MarkerOptions = {
+            title: sucursal.nombre,
             position: {
               lat: sucursal.coords.lat,
               lng: sucursal.coords.lng
             },
-            title: sucursal.nombre
-            
+            icon: 'blue',
+            animation: 'DROP'
           }
-  
-          this.map.addMarker(markerOptions)
+          let marker: Marker = this.map.addMarkerSync(markerOptions)
+          marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(()=>{
+            let options: GeocoderRequest = {
+              position: marker.getPosition()
+            };
+            // latitude,longitude -> direccion
+            Geocoder.geocode(options)
+            .then((res) => {
+              this.alertCtrl.create({
+                header: sucursal.nombre,
+                message: res[0].extra.lines[5] +", "+ res[0].extra.lines[4] +", "+ res[0].extra.lines[3] +", "+ res[0].extra.lines[2] +", "+ res[0].extra.lines[1] + ", CP: " +((res[0].extra.lines[6] != undefined)? res[0].extra.lines[6]: 'N/D'),
+                buttons: ['Ok']
+              }).then(
+                el => el.present()
+              )
+            })
+          })
         }
       )
     })
@@ -41,6 +60,12 @@ export class SucursalesPage implements OnInit, OnDestroy {
   }
 
   cargarMapa(){
+
+    Environment.setEnv({
+      'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyDQT9_ljvvQ8OvwJ3QxGgWghfd5lTkhfnU',
+      'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyDQT9_ljvvQ8OvwJ3QxGgWghfd5lTkhfnU'
+    })
+
     let opcionesMapa: GoogleMapOptions = {
       mapType: 'MAP_TYPE_TERRAIN',
       controls:
@@ -54,15 +79,13 @@ export class SucursalesPage implements OnInit, OnDestroy {
         target:
         {
           lat: 25.6061582,
-          lng: -101.3479721
+          lng: -100.3479721
         },
-        zoom: 5
+        zoom: 9
       }
     }
 
     this.map = this.googlemaps.create('map_canvas', opcionesMapa)
-
-    
 
   }
 

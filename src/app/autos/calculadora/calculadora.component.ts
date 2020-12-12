@@ -26,13 +26,13 @@ export class CalculadoraComponent implements OnInit {
       {
         nombre: 'Rin deportivo',
         imagen: 'assets/calculadora/rin_deportivo_1.jpg',
-        extra: 2500,
+        extra: 3200,
         dias: 5
       },
       {
         nombre: 'Rin deportivo 2',
         imagen: 'assets/calculadora/rin_cromado.png',
-        extra: 3000,
+        extra: 4500,
         dias: 7
       }
     ],
@@ -66,7 +66,7 @@ export class CalculadoraComponent implements OnInit {
       },
       {
         nombre: 'cafe',
-        extra: 7000,
+        extra: 8000,
         dias: 14
       },
       {
@@ -83,7 +83,7 @@ export class CalculadoraComponent implements OnInit {
       },
       {
         nombre: 'manual',
-        extra: 15000,
+        extra: 30000,
         dias: 15
       }
     ]
@@ -157,8 +157,7 @@ export class CalculadoraComponent implements OnInit {
       dias_espera: this.dias_espera,
       extra: this.total - this.auto.price
     }
-  
-
+    
     this.ModalCtrl.dismiss()
 
     let info: NavigationExtras = {

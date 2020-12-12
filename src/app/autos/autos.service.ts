@@ -180,6 +180,15 @@ export class AutosService {
   }
 
   getAuto(id: number){
-    return this._Autos.value[id]
+    let a: Auto
+    this._Autos.value.map(
+      auto => {
+        if(auto.id == id){
+          a = auto
+          return
+        }
+      }
+    )
+    return a
   }
 }

@@ -21,7 +21,10 @@ export class HomePage implements OnInit{
         this.autos = auto
       }
     )
-    console.log(this.autos)
+  }
+  
+  precio(precio: number){
+    return precio.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
 }

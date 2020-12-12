@@ -33,7 +33,10 @@ export class PedidoPage implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe(
       params => {
+        console.log(this.autosService.getAuto(+params["auto_id"]))
         this.auto = this.autosService.getAuto(+params["auto_id"])
+        console.log(this.auto)
+        
         this.extras = JSON.parse(params["extras"])
         let total = +this.extras['extra'] + this.auto.price
         this.total = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
@@ -86,7 +89,7 @@ export class PedidoPage implements OnInit {
       loadingEl.dismiss()
       this.alertCtrl.create({
       header: 'Exito',
-      message: 'Solicitud enviada',
+      message: 'Solicitud enviada, recibiras un correo con la informacion',
       buttons: [
         {
           text: 'Continuar',

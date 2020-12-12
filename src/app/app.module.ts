@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CalculadoraComponent } from './autos/calculadora/calculadora.component';
 import { FirebaseApp } from '@angular/fire';
 import { GoogleMaps } from '@ionic-native/google-maps';
+import { Camera } from '@ionic-native/camera/ngx';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     SplashScreen,
     FirebaseApp,
     GoogleMaps,
+    Camera,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
